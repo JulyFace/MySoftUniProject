@@ -1,4 +1,5 @@
-﻿using DemoQA.Pages.InteractionsPages.DraggablePage;
+﻿using DemoQA.Extentions;
+using DemoQA.Pages.InteractionsPages.DraggablePage;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using System;
@@ -17,17 +18,13 @@ namespace DemoQA.TESTS.InteractionTESTS
         {
             Initialize();
             _draggablePage = new DraggablePage(Driver);
-
             _draggablePage.NavigateTo();
-
-
         }
 
         [TearDown]
         public void TearDown()
         {
             Driver.Quit();
-
         }
 
         [Test]
@@ -45,14 +42,11 @@ namespace DemoQA.TESTS.InteractionTESTS
         public void Y_RestrictedMovement_when_DownMoveIsSet_AXISrestricted()
         {
             _draggablePage.AxisRestricted.Click();
-
             var YpositionBefore = _draggablePage.OnlyX_Box.Location.Y;
 
             Builder.DragAndDropToOffset(_draggablePage.OnlyX_Box, 100, 100).Perform();
 
             Assert.AreEqual(YpositionBefore, _draggablePage.OnlyX_Box.Location.Y);
-
-
         }
 
 
@@ -61,7 +55,8 @@ namespace DemoQA.TESTS.InteractionTESTS
         {
             _draggablePage.ContainerRestrictedButton.Click();
 
-            
+            Driver.ScrollTo(_draggablePage.TextInBox);
+
             Builder.DragAndDropToOffset(_draggablePage.TextInBox, 100, 100).Perform();
 
             var x_locationAfter = _draggablePage.TextInBox.Location.X;
@@ -69,7 +64,6 @@ namespace DemoQA.TESTS.InteractionTESTS
 
             _draggablePage.AssertLocations(314d, x_locationAfter, 3);
             _draggablePage.AssertLocations(663d, y_locationAfter, 3);
-
 
         }
 

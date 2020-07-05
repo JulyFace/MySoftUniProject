@@ -20,7 +20,7 @@ namespace DemoQA.Pages
 
         public IWebDriver Driver { get; }
 
-        public WebDriverWait Wait { get; }  
+       // public WebDriverWait Wait { get; }  
 
         public void NavigateTo()
         {

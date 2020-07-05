@@ -18,10 +18,6 @@ namespace DemoQA.TESTS.InteractionTESTS
         {
             Initialize();
             _droppablePage = new DroppablePage(Driver);
-            // Driver.Url = "http://www.demoqa.com/droppable";
-            
-           
-
             _droppablePage.NavigateTo();
         }
 
@@ -73,11 +69,6 @@ namespace DemoQA.TESTS.InteractionTESTS
         {
             Driver.Quit();
         }
-
-
-
-
-
 
 
     }

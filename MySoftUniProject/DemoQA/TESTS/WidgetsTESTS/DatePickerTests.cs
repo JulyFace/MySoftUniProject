@@ -2,9 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
+using System.Drawing;
 
 namespace DemoQA.TESTS.WidgetsTESTS
 {
@@ -19,6 +17,7 @@ namespace DemoQA.TESTS.WidgetsTESTS
         {
             Initialize();
             _datePickerPage = new DatePickerPage(Driver);
+            Driver.Manage().Window.Size = new Size(1080, 800);
             _datePickerPage.NavigateTo();
 
         }
@@ -30,26 +29,24 @@ namespace DemoQA.TESTS.WidgetsTESTS
         }
 
         [Test]
-        public void InsertADate_withSpaceSeparatedInputs() 
+        public void InsertADate_withSpaceSeparatedInputs()
         {
             DateTime tomorrow = DateTime.Today.AddDays(1);
+
+            var tom = tomorrow.DayOfWeek.ToString();
+
             _datePickerPage.DateBar.Click();
-           // _datePickerPage.DateBar.SendKeys(Keys.ArrowDown+Keys.Right+Keys.Enter);
-            _datePickerPage.DateBar.SendKeys(Keys.ArrowDown+Keys.Right+Keys.Enter);
 
+            // _datePickerPage.DateBar.SendKeys(Keys.ArrowDown+Keys.Right+Keys.Enter);
+            _datePickerPage.DateBar.SendKeys(Keys.ArrowDown + Keys.Right + Keys.Enter);
+           
+            //var tom = tomorrow.ToString;
 
-            Assert.AreEqual(_datePickerPage.DateBar.GetAttribute("value"),tomorrow );
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+            //StringAssert.Contains(_datePickerPage.DateBar.GetAttribute("value"),tomorrow );
+            // Assert.AreEqual(,tomorrow );
+
         }
+       
     }
 
 }
