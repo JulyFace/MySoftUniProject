@@ -1,5 +1,4 @@
 ﻿
-
 namespace DemoQA.UserModel
 {
     public class RegistrationFormModel
